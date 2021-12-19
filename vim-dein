@@ -1,0 +1,94 @@
+let mapleader = "\<Space>"
+" let mapleader = ","
+
+lang en_US.UTF-8
+
+" ------------------------------------------------------------------------------
+" Options
+" {{{
+set fileformats=unix,dos,mac
+set encoding=utf-8
+set fileencoding=utf-8
+scriptencoding=utf-8
+"set fileencodings=euc-jp,cp932,iso-2022-jp
+"set fileencodings=iso-2022-jp,euc-jp,cp932
+set fileencodings=iso-2022-jp,utf-8,euc-jp,cp932
+
+set ambiwidth=double
+set nobackup
+set belloff=all
+set backspace=""
+set cursorline
+set expandtab
+set foldlevel=1
+set nofoldenable
+set foldmethod=indent
+set hlsearch
+set noincsearch
+set laststatus=2
+set modeline
+set modelines=5
+set ruler
+set showcmd
+set noshowmode
+set shiftwidth=2
+set noshowmatch
+set softtabstop=2
+set tabstop=2
+set noundofile
+
+set directory=$HOME/.vim/tmp
+set wildmode=longest:full
+set wildmenu
+set iminsert=0
+set imsearch=0
+
+set mouse-=a " Disable automatic visual mode using mouse
+
+"}}}
+
+" ------------------------------------------------------------------------------
+" For dein
+" {{{
+let s:cache_home = expand('~/.cache')
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if &compatible
+  set nocompatible " Be iMproved
+endif
+
+" Required:
+" Add the dein installation directory into runtimepath
+execute 'set runtimepath^=' . s:dein_repo_dir
+"set runtimepath+=s:dein_repo_dir
+
+"let g:dein#install_github_api_token = 'your token'
+
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  " Let dein manage dein
+  call dein#add(s:dein_repo_dir)
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+ call dein#install()
+endif
+command! DeinInstall call dein#install()
+command! DeinUpdate call dein#check_update(v:true)
+"}}}
+
+set background=dark
+
+" vim: ft=vim foldmethod=marker:
