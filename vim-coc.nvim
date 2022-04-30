@@ -4,6 +4,7 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
+" https://github.com/neoclide/coc.nvim 
 " Declare the list of plugins.
   " Docs
 Plug 'vim-jp/vimdoc-ja'

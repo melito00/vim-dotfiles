@@ -19,10 +19,16 @@ ln -s .config/nvim/init.vim .vimrc
 
 ### Vim-Plug
 - https://github.com/junegunn/vim-plug
+```For Vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +'PlugInstall --sync' +qa
+```
 
 ```For Neovim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim --headless +PlugInstall +qall
 ```
 
 ```For vimrc

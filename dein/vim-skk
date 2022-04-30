@@ -108,9 +108,10 @@ imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
 call skkeleton#config({
-\'eggLikeNewline':v:true,
-\'showCandidatesCount':2
-\})
+  \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
+  \ 'eggLikeNewline':v:true,
+  \ 'showCandidatesCount':2
+  \ })
 
 call ddc#custom#patch_global('sources', ['skkeleton'])
 call ddc#custom#patch_global('sourceOptions', {

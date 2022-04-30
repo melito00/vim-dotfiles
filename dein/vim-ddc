@@ -107,6 +107,8 @@ set background=dark
 call ddc#custom#patch_global('sources', ['around'])
 call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
+  \   'minAutoCompletionLength': 1,
+  \   'maxCandidates': 10,
   \   'matchers': ['matcher_head'],
   \   'sorters': ['sorter_rank']
   \ }
