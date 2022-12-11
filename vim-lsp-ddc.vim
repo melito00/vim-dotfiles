@@ -105,14 +105,22 @@ require("nvim-lsp-installer").setup({
   ensure_installed = {},
   automatic_installation = false
 })
+local lspconfig = require("lspconfig")
+
+local function on_attach(client, bufnr)
+  -- set up buffer keymaps, etc.
+end
+
+-- lspconfig.sumneko_lua.setup { on_attach = on_attach }
+-- lspconfig.tsserver.setup { on_attach = on_attach }
 EOF
 endif
 " }}}
 
 " ------------------------------------------------------------------------------
 " ddc
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
-
+" For command line completion
+if 0
 call ddc#custom#patch_global('autoCompleteEvents', [
   \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
   \ 'CmdlineEnter', 'CmdlineChanged',
@@ -151,6 +159,7 @@ function! CommandlinePre() abort
 endfunction
 
 nnoremap : <Cmd>call CommandlinePre()<CR>:
+endif
  
 " skkelton
 imap <C-j> <Plug>(skkeleton-toggle)
@@ -168,6 +177,7 @@ if has('nvim')
 else
   call ddc#custom#patch_global('sources', ['skkeleton'])
 endif
+call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sourceOptions', {
   \ '_': {
   \   'matchers': ['matcher_fuzzy'],
@@ -184,8 +194,6 @@ call ddc#custom#patch_global('sourceOptions', {
   \   'sorters': []
   \ },
   \ })
-
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
 " pum.vim
 " inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
